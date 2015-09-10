@@ -1,7 +1,7 @@
 // tutorial7.js
 var Comment = React.createClass({
     render: function(){
-        var rawMarkup = marked(this.props.children.toString(),{sanitize:true});
+        var rawMarkup = marked(this.props.children.toString(),{sanitize: true});
         return (
             <div className="comment">
                 <h2 className="commentAuthor">
@@ -39,14 +39,19 @@ var CommentBox = React.createClass({
         return (
             <div className="commentBox">
                 <h1>Comments</h1>
-                <CommentList />
+                <CommentList data={this.props.data}/>
                 <CommentForm />
             </div>
         );
     }
 });
 
+var data = [
+    {author: "Pete Hunt", text: "This is one comment"},
+    {author: "Jordan Walke", text: "This is *another* comment"}
+]
+
 React.render(
-    <CommentBox />,
+    <CommentBox data={data}/>,
     document.querySelector('#content')
 )
